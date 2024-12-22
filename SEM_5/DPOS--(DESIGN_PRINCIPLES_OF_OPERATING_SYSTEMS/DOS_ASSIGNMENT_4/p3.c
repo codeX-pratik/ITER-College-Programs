@@ -110,13 +110,15 @@ int main() {
 
 /*
 
-First Child: PID = 577, Parent PID = 576
-File open error: No such file or directory
-Second Child: PID = 578, Parent PID = 576
+First Child: PID = 689, Parent PID = 688
+First Child: Copied content from file1.txt to file2.txt
+Second Child: PID = 690, Parent PID = 688
 Second Child: Displaying content of file2.txt
-Third Child: PID = 579, Parent PID = 576
+A computer is a machine that can be programmed to automatically carry out sequences of arithmetic or logical operations (computation). Modern digital electronic computers can perform generic sets of operations known as programs. These programs enable computers to perform a wide range of tasks. The term computer system may refer to a nominally complete computer that includes the hardware, operating system, software, and peripheral equipment needed and used for full operation; or to a group of computers that are linked and function together, such as a computer network or computer cluster.
+Third Child: PID = 691, Parent PID = 688
 Third Child: Displaying sorted content of file2.txt in reverse order
-Parent Process: PID = 576
+A computer is a machine that can be programmed to automatically carry out sequences of arithmetic or logical operations (computation). Modern digital electronic computers can perform generic sets of operations known as programs. These programs enable computers to perform a wide range of tasks. The term computer system may refer to a nominally complete computer that includes the hardware, operating system, software, and peripheral equipment needed and used for full operation; or to a group of computers that are linked and function together, such as a computer network or computer cluster.
+Parent Process: PID = 688
 Parent Process: All child processes have completed.
 
 */
