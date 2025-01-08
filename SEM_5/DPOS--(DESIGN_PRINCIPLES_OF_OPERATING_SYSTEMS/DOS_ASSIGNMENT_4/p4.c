@@ -89,95 +89,41 @@ Parent Process: Task completed.
 /*
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
-#include <sys/wait.h>
-#include <stdbool.h>
+void main() {
+   int len, i, j;
+   printf("Enter the length: ");
+   scanf("%d", &len);
+   int arr[len];
+   if(vfork() == 0) {
+      arr[0] = 0;
+      arr[1] = 1;
+      for(i = 2; i < len; i++)
+         arr[i] = arr[i-1] + arr[i-2];
+      _exit(0);
+   } else {
+      printf("Fibonacci numbers: ");
+      for(i = 0; i < len; i++)
+         printf("%d ", arr[i]);
+      printf("\n");
 
-// Function to check if a number is prime
-bool is_prime(int num) {
-    if (num <= 1) return false;
-    for (int i = 2; i * i <= num; i++) {
-        if (num % i == 0) return false;
-    }
-    return true;
-}
-
-// Function to generate Fibonacci series
-void generate_fibonacci(int *fib, int length) {
-    if (length >= 1) fib[0] = 0;
-    if (length >= 2) fib[1] = 1;
-    for (int i = 2; i < length; i++) {
-        fib[i] = fib[i - 1] + fib[i - 2];
-    }
-}
-
-int main() {
-    int n;
-
-    printf("Enter the length of the Fibonacci series: ");
-    scanf("%d", &n);
-
-    if (n <= 0) {
-        printf("Invalid length. Please enter a positive integer.\n");
-        return EXIT_FAILURE;
-    }
-
-    int fib[n];
-    pid_t pid = fork();
-
-    if (pid < 0) {
-        perror("Fork failed");
-        return EXIT_FAILURE;
-    }
-
-    if (pid == 0) {
-        // Child process: Generate Fibonacci series
-        printf("Child process (PID: %d): Generating Fibonacci series...\n", getpid());
-        generate_fibonacci(fib, n);
-
-        // Write the Fibonacci series to a pipe
-        int pipefd[2];
-        pipe(pipefd);
-
-        close(pipefd[0]); // Close read end of the pipe
-        write(pipefd[1], fib, sizeof(fib));
-        close(pipefd[1]); // Close write end of the pipe
-
-        printf("Child process: Fibonacci series generated and sent to parent.\n");
-        exit(0);
-    } else {
-        // Parent process: Wait for child to complete
-        wait(NULL);
-
-        printf("Parent process (PID: %d): Receiving Fibonacci series from child...\n", getpid());
-
-        // Read the Fibonacci series from the pipe
-        int pipefd[2];
-        pipe(pipefd);
-
-        close(pipefd[1]); // Close write end of the pipe
-        read(pipefd[0], fib, sizeof(fib));
-        close(pipefd[0]); // Close read end of the pipe
-
-        printf("Fibonacci series: ");
-        for (int i = 0; i < n; i++) {
-            printf("%d ", fib[i]);
-        }
-        printf("\n");
-
-        // Identify and display prime Fibonacci numbers with their positions
-        printf("Prime Fibonacci numbers:\n");
-        for (int i = 0; i < n; i++) {
-            if (is_prime(fib[i])) {
-                printf("Position %d: %d\n", i + 1, fib[i]);
+      printf("Prime fibonacci numbers:\n");
+      for (int i = 0; i < len; i++) {
+         int is_prime = 1;
+         if (arr[i] <= 1) {
+            is_prime = 0;
+         } else {
+            for (int j = 2; j * j <= arr[i]; j++) {
+               if (arr[i] % j == 0) {
+                  is_prime = 0;
+                  break;
+               }
             }
-        }
-
-        printf("Parent process: Task completed.\n");
-    }
-
-    return 0;
+         }
+         if (is_prime)
+            printf("%d at index %d\n", arr[i], i);
+      }
+   }
 }
 
 
