@@ -1,0 +1,23 @@
+
+echo "Enter marks for 5 subjects:"
+read -p "Subject 1: " subject1
+read -p "Subject 2: " subject2
+read -p "Subject 3: " subject3
+read -p "Subject 4: " subject4
+read -p "Subject 5: " subject5
+
+total=$((subject1 + subject2 + subject3 + subject4 + subject5))
+percentage=$((total / 5))
+
+echo "Total marks: $total"
+echo "Percentage: $percentage%"
+
+if [ $percentage -ge 60 ]; then
+    echo "First Division"
+elif [ $percentage -ge 50 ]; then
+    echo "Second Division"
+elif [ $percentage -ge 40 ]; then
+    echo "Third Division"
+else
+    echo "Fail"
+fi
