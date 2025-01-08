@@ -1,0 +1,17 @@
+
+overtime_rate=12
+
+for (( i=1; i<=10; i++ ))
+do
+  echo "Enter the total hours worked by employee $i: "
+  read hours_worked
+
+  if (( hours_worked > 40 ))
+  then
+    overtime_hours=$(( hours_worked - 40 ))
+    overtime_pay=$(( overtime_hours * overtime_rate ))
+    echo "Employee $i worked $overtime_hours overtime hours. Overtime pay: Rs. $overtime_pay"
+  else
+    echo "Employee $i did not work any overtime."
+  fi
+done

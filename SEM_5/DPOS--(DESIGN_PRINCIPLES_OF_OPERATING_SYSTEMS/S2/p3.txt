@@ -1,0 +1,31 @@
+echo "Enter internal marks: "
+read internal_marks
+
+echo "Enter attendance percentage: "
+read attendance_percentage
+
+echo "Enter external marks: "
+read external_marks
+
+eligible=true
+
+if [ $internal_marks -lt 16 ]; then
+    echo "Internal marks are insufficient."
+    eligible=false
+fi
+
+if [ $attendance_percentage -lt 40 ]; then
+    echo "Attendance percentage is insufficient."
+    eligible=false
+fi
+
+if [ $external_marks -lt 24 ]; then
+    echo "External marks are insufficient."
+    eligible=false
+fi
+
+if [ "$eligible" = true ]; then
+    echo "Allowed for Next Semester."
+else
+    echo "Not allowed for Next Semester due to the failed conditions."
+fi
