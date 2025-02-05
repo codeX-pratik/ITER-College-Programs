@@ -1,4 +1,4 @@
-create table instructor (ID number(5), Name varchar2(20), Dept_name varchar2(20), Salary number(6));
+create table Instructor (ID number(5), Name varchar2(20), Dept_name varchar2(20), Salary number(6));
 create table Course (Course_id varchar(10), Title varchar(30), Dept_name varchar(20), Credits number(2));
 create table Prereq (Course_id varchar(10), Prereq_id varchar(10));
 create table Department (Dept_name varchar(20), Building varchar(20), Budget number(10));
