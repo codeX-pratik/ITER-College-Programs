@@ -1,0 +1,79 @@
+create table instructor (ID number(5), Name varchar2(20), Dept_name varchar2(20), Salary number(6));
+create table Course (Course_id varchar(10), Title varchar(30), Dept_name varchar(20), Credits number(2));
+create table Prereq (Course_id varchar(10), Prereq_id varchar(10));
+create table Department (Dept_name varchar(20), Building varchar(20), Budget number(10));
+create table Teaches (ID number(5), Course_id varchar(10), Sec_id number(2), Semester varchar(10), year number(4));
+
+
+
+
+insert into instructor values(10101, 'Srinivasan', 'Comp. Sci', 65000);
+insert into instructor values(12121, 'Wu', 'Finance', 90000);
+insert into instructor values(15151, 'Mozart', 'Music', 40000);
+insert into instructor values(22222, 'Einstein', 'Physics', 95000);
+insert into instructor values(32343, 'El Said', 'History', 60000);
+insert into instructor values(33456, 'Gold', 'Physics', 87000);
+insert into instructor values(45565, 'Katz', 'Comp. Sci', 75000);
+insert into instructor values(58583, 'Califieri', 'History', 62000);
+insert into instructor values(76543, 'Singh', 'Finance', 80000);
+insert into instructor values(76766, 'Crick', 'Biology', 72000);
+insert into instructor values(83821, 'Brandt', 'Comp. Sci', 92000);
+insert into instructor values(98345, 'kim', 'Elec. Eng.', 80000);
+
+
+
+
+insert into Course values('BIO-101', 'Intro. to Biology', 'Biology', 4);
+insert into Course values('BIO-301', 'Genetics', 'Biology', 4);
+insert into Course values('BIO-399', 'Computational Biology', 'Biology', 3);
+insert into Course values('CS-101', 'Intro. to Computer Science', 'Comp. Sci', 4);
+insert into Course values('CS-190', 'Game Design', 'Comp. Sci', 4);
+insert into Course values('CS-315', 'Robotics', 'Comp. Sci', 3);
+insert into Course values('CS-319', 'Image Processing', 'Comp. Sci', 3);
+insert into Course values('CS-347', 'Database System Concepts', 'Comp. Sci', 3);
+insert into Course values('EE-181', 'Intro. to Digital Systems', 'Elec. Eng.', 3);
+insert into Course values('FIN-201', 'Investment Banking', 'Finance', 3);
+insert into Course values('HIS-351', 'World History', 'History', 3);
+insert into Course values('MU-199', 'Music Video Production', 'Music', 3);
+insert into Course values('PHY-101', 'Physical Principles', 'Physics', 4);
+
+
+
+
+insert into prereq values('BIO-301', 'BIO-101');
+insert into prereq values('BIO-399', 'BIO-101');
+insert into prereq values('CS-190', 'CS-101');
+insert into prereq values('CS-315', 'CS-101');
+insert into prereq values('CS-319', 'CS-101');
+insert into prereq values('CS-347', 'CS-101');
+insert into prereq values('CS-181', 'PHY-101');
+
+
+
+
+insert into department values('Biology', 'Watson', 90000);
+insert into department values('Comp. Sci', 'Taylor', 100000);
+insert into department values('Elec. Eng.', 'Taylor', 85000);
+insert into department values('Finance', 'Painter', 120000);
+insert into department values('History', 'Painter', 50000);
+insert into department values('Music', 'Packard', 80000);
+insert into department values('Physics', 'Watson', 70000);
+
+
+
+
+insert into teaches values(10101, 'CS-101', 1, 'Fall', 2009);
+insert into teaches values(10101, 'CS-315', 1, 'spring', 2010);
+insert into teaches values(10101, 'CS-347', 1, 'Fall', 2009);
+insert into teaches values(12121, 'FIN-201', 1, 'spring', 2010);
+insert into teaches values(15151, 'MU-199', 1, 'spring', 2010);
+insert into teaches values(22222, 'PHY-101', 1, 'Fall', 2009);
+insert into teaches values(32343, 'HIS-351', 1, 'spring', 2010);
+insert into teaches values(45565, 'CS-101', 1, 'spring', 2010);
+insert into teaches values(45565, 'CS-319', 1, 'spring', 2010);
+insert into teaches values(76766, 'BIO-101', 1, 'summer', 2009);
+insert into teaches values(76766, 'BIO-031', 1, 'summer', 2010);
+insert into teaches values(83821, 'CS-190', 1, 'spring', 2009);
+insert into teaches values(83821, 'CS-190', 2, 'spring', 2009);
+insert into teaches values(83821, 'CS-319', 2, 'spring', 2010);
+insert into teaches values(98345, 'EE-181', 1, 'spring', 2009);
