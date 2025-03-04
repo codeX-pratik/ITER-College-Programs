@@ -1,0 +1,49 @@
+1. desc instructor
+   desc course
+   desc prereq
+   desc department
+   desc teaches
+
+2. select * from instructor;
+   select * from course;
+   select * from prereq;
+   select * from department;
+   select * from teaches;
+
+3. select name, dept_name from instructor;
+
+4. select name, salary from instructor where dept_name = 'Comp. Sci';
+
+5. select * from instructor where dept_name = 'Physics' and salary <= 90000;
+
+6. select name from instructor where dept_name != 'Comp. Sci';
+
+7. select distinct dept_name from instructor;
+
+8. select course_id from teaches where semester = 'spring' and year = 2009;
+
+9. select title from course where dept_name = 'Comp. Sci' and credits = 3;
+
+10. select * from course order by dept_name desc;
+
+11. alter table instructor add data_of_join date;
+
+12. update instructor set date_of_join = to_date('2020-1-31', 'yyyy-mm-dd');
+
+13. alter table instructor rename column dept_name to department;
+    alter table course rename column dept_name to department;
+    alter table department rename column dept_name to department;
+
+14. alter table prereq rename to Prerequired;
+
+15. alter table prerequired rename column course_id to sub_code;
+
+16. alter table instructor modify name varchar(50);
+
+17. alter table instructor rename to faculty_info;
+
+18. alter table course modify course_id varchar(8);
+
+19. drop table prereq;
+
+20. alter table department rename column building to builder;
