@@ -1,49 +1,80 @@
-1. desc instructor
+1. 
+   desc instructor
    desc course
    desc prereq
    desc department
    desc teaches
 
-2. select * from instructor;
+2. 
+   select * from instructor;
    select * from course;
    select * from prereq;
    select * from department;
    select * from teaches;
 
-3. select name, dept_name from instructor;
+3. 
+   select name, dept_name from instructor;
 
-4. select name, salary from instructor where dept_name = 'Comp. Sci';
+4. 
+   select name, salary from instructor where dept_name = 'Comp. Sci';
 
-5. select * from instructor where dept_name = 'Physics' and salary <= 90000;
+5. 
+   select * from instructor where dept_name = 'Physics' and salary <= 90000;
 
-6. select name from instructor where dept_name != 'Comp. Sci';
+6. 
+   select name from instructor where dept_name != 'Comp. Sci';
 
-7. select distinct dept_name from instructor;
+7. 
+   select distinct dept_name from instructor;
 
-8. select course_id from teaches where semester = 'spring' and year = 2009;
+8. 
+   select course_id from teaches where semester = 'spring' and year = 2009;
 
-9. select title from course where dept_name = 'Comp. Sci' and credits = 3;
+9. 
+   select title from course where dept_name = 'Comp. Sci' and credits = 3;
 
-10. select * from course order by dept_name desc;
+10. 
+   select * from course order by dept_name desc;
 
-11. alter table instructor add data_of_join date;
+11. 
+   alter table instructor add data_of_join date;
 
-12. update instructor set date_of_join = to_date('2020-1-31', 'yyyy-mm-dd');
+12. 
+   update instructor set date_of_join = to_date('2009-1-12', 'yyyy-mm-dd') where id = 10101;
+   update instructor set date_of_join = to_date('2008-2-11', 'yyyy-mm-dd') where id = 12121;
+   update instructor set date_of_join = to_date('2003-3-10', 'yyyy-mm-dd') where id = 15151;
+   update instructor set date_of_join = to_date('2020-4-9', 'yyyy-mm-dd') where id = 22222;
+   update instructor set date_of_join = to_date('2006-5-8', 'yyyy-mm-dd') where id = 32343;
+   update instructor set date_of_join = to_date('2015-6-7', 'yyyy-mm-dd') where id = 33456;
+   update instructor set date_of_join = to_date('2014-7-6', 'yyyy-mm-dd') where id = 45565;
+   update instructor set date_of_join = to_date('2018-8-5', 'yyyy-mm-dd') where id = 58583;
+   update instructor set date_of_join = to_date('2019-9-4', 'yyyy-mm-dd') where id = 76543;
+   update instructor set date_of_join = to_date('2011-10-3', 'yyyy-mm-dd') where id = 76766;
+   update instructor set date_of_join = to_date('2010-11-2', 'yyyy-mm-dd') where id = 83821;
+   update instructor set date_of_join = to_date('2012-12-1', 'yyyy-mm-dd') where id = 98345;
 
-13. alter table instructor rename column dept_name to department;
-    alter table course rename column dept_name to department;
-    alter table department rename column dept_name to department;
+13. 
+   alter table instructor rename column dept_name to department;
+   alter table course rename column dept_name to department;
+   alter table department rename column dept_name to department;
 
-14. alter table prereq rename to Prerequired;
+14. 
+   alter table prereq rename to Prerequired;
 
-15. alter table prerequired rename column course_id to sub_code;
+15. 
+   alter table prerequired rename column course_id to sub_code;
 
-16. alter table instructor modify name varchar(50);
+16. 
+   alter table instructor modify name varchar(50);
 
-17. alter table instructor rename to faculty_info;
+17. 
+   alter table instructor rename to faculty_info;
 
-18. alter table course modify course_id varchar(8);
+18. 
+   alter table course modify course_id varchar(8);
 
-19. drop table prereq;
+19. 
+   drop table prereq;
 
-20. alter table department rename column building to builder;
+20. 
+   alter table department rename column building to builder;
