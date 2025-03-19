@@ -18,7 +18,7 @@ insert into Instructor values(58583, 'Califieri', 'History', 62000);
 insert into Instructor values(76543, 'Singh', 'Finance', 80000);
 insert into Instructor values(76766, 'Crick', 'Biology', 72000);
 insert into Instructor values(83821, 'Brandt', 'Comp. Sci', 92000);
-insert into Instructor values(98345, 'kim', 'Elec. Eng.', 80000);
+insert into Instructor values(98345, 'Kim', 'Elec. Eng.', 80000);
 
 
 
