@@ -37,7 +37,7 @@
    select * from course order by dept_name desc;
 
 11. 
-   alter table instructor add data_of_join date;
+   alter table instructor add date_of_join date;
 
 12. 
    update instructor set date_of_join = to_date('2009-1-12', 'yyyy-mm-dd') where id = 10101;
