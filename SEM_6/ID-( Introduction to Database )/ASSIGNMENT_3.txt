@@ -34,3 +34,52 @@
 
     l) 
         delete from course where course_id like 'BIO%';
+
+2.  
+    a)
+        select avg(salary) from faculty_info;
+    
+    b)
+        select department, avg(salary) as avgsalary from faculty_info group by department;
+
+    c)
+        select id, name, department from faculty_info where salary = (select max(salary) from faculty_info);
+
+    d)
+        select count(*) as total_instructors from faculty_info where department = 'Comp. Sci';
+
+    e)
+        select count(*) as total_instructors from faculty_info where department = 'Comp. Sci';
+
+    f)
+        select department, count(*) as no_of_instructor, sum(salary) as total_salary from faculty_info where department in ('Physics', 'Comp. Sci') group by department;
+
+    g)
+        select department, sum(credits) from course where department in ('Comp. Sci', 'Biology') group by department;
+
+    h)
+        select builder, sum(budget) as total_budget from department group by builder;
+
+    i)
+        select department, count(*) as no_of_instructor from faculty_info group by department;
+
+    j)
+        select department, count(*) as no_of_instructor from faculty_info group by department order by no_of_instructor desc;
+
+    k)
+        select semester, count(*) as no_course from teaches group by semester order by no_course desc;
+
+    l)
+        select department from faculty_info group by department having count(*) < 2;
+
+    m)
+        select department, count(*) as num_instructor from faculty_info where department <> 'Finance' group by department having count(*) > 2 order by num_instructor desc;
+
+    n)
+        select department, sum(salary) as total_salary from faculty_info group by department having sum(salary) > 50000;
+    
+    0)
+        select sum(budget) as total_budget from department where builder = 'Watson';
+
+    p)
+        select max(salary) as higher_salary from faculty_info where department = 'Comp. Sci';
