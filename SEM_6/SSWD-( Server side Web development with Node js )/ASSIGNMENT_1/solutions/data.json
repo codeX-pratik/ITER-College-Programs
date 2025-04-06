@@ -1,0 +1,8 @@
+{ 
+   "name": "John", 
+   "lastName": "Singh", 
+   "dob": 1990, 
+   "city": "Chennai", 
+   "age": 36, 
+   "salary": 100000 
+}
