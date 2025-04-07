@@ -10,3 +10,10 @@ int main() {
 
     return 0;
 }
+
+/*
+
+Enter the value of x, y and z : 10 5 1
+The largest number is 10
+
+*/

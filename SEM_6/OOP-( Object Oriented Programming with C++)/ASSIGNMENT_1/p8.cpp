@@ -26,3 +26,17 @@ int main() {
 
     return 0;
 }
+
+/*
+
+Enter the base : 4
+Do you want to enter exponent (y / n) ? n
+4 square is 16
+
+
+Enter the base : 4
+Do you want to enter exponent (y / n) ? y
+Enter the exponent : 4
+4 raised to the power 4 is 256
+
+*/

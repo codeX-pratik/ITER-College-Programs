@@ -33,3 +33,16 @@ int main() {
 
     return 0;
 }
+
+/*
+
+Enter the number of rows : 2
+Enter the number of column : 2
+Enter the element of the matrix : 
+1 2 3
+4 5 6
+Displaying the matrix : 
+1 2 
+3 4 
+
+*/
