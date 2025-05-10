@@ -1,0 +1,51 @@
+create table customer(
+  cust_no varchar2(5) check( cust_no like 'C%' ),
+  name varchar2(20) not null,
+  phone_no number(10),
+  city varchar2(9) not null,
+  primary key (cust_no));
+
+insert into customer values('C0001', 'RAJ ANAND SINGH', 9861258466, 'DELHI');
+insert into customer values('C0002', 'ANKITA SINGH', 9879958651, 'BANGALORE');
+insert into customer values('C0003', 'SOUMYA JHA', 9885623344, 'MUMBAI');
+insert into customer values('C0004', 'ABHIJIT MISHRA', 9455845425, 'MUMBAI');
+insert into customer values('C0005', 'YASH SARAF', 9665854585, 'KOLKATA');
+insert into customer values('C0006', 'SWAROOP RAY', 9437855466, 'CHENNAI');
+insert into customer values('C0007', 'SURYA NARAYAN', 9937955212, 'GURGAON');
+insert into customer values('C0008', 'PRANAV PRAVEEN', 9336652441, 'PUNE');
+insert into customer values('C0009', 'STUTI MISRA', 7870266534, 'DELHI');
+insert into customer values('C0010', 'ASLESHA TIWARI', NULL, 'MUMBAI');
+
+
+create table branch(
+  branch_code varchar2(4),
+  branch_name varchar2(20) not null,
+  branch_city varchar2(8) check(branch_city in ('Delhi', 'Mumbai', 'Kolkata', 'Chennai')),
+  primary key (branch_code));
+
+insert into branch values('B001', 'Janakpuri Branch', 'Delhi');
+insert into branch values('B002', 'Chandnichowk Branch', 'Delhi');
+insert into branch values('B003', 'Juhu Branch', 'Mumbai');
+insert into branch values('B004', 'Andheri Branch', 'Mumbai');
+insert into branch values('B005', 'Saltlake Branch', 'Kolkata');
+insert into branch values('B006', 'Srirampuram Branch', 'Chennai');
+
+
+create table account(
+  account_no varchar2(5) check(account_no like 'A%'),
+  type varchar2(2) check(type in ('SB', 'FD', 'CA')),
+  balance number(7) check(balance < 10000000),
+  branch_code varchar2(4),
+  primary key(account_no),
+  foreign key(branch_code) references Branch(branch_code));
+
+insert into account values('A0001', 'SB', 200000, 'B003');
+insert into account values('A0002', 'SB', 15000, 'B002');
+insert into account values('A0003', 'CA', 850000, 'B004');
+insert into account values('A0004', 'CA', 35000, 'B004');
+insert into account values('A0005', 'FD', 28500, 'B005');
+insert into account values('A0006', 'FD', 550000, 'B005');
+insert into account values('A0007', 'SB', 48000, 'B001');
+insert into account values('A0008', 'SB', 7200, 'B002');
+insert into account values('A0009', 'SB', 18750, 'B003');
+insert into account values('A0010', 'FD', 99000, 'B004');
