@@ -1,0 +1,69 @@
+CREATE TABLE bank_customers (
+    custno VARCHAR2(10) PRIMARY KEY,
+    name VARCHAR2(50) NOT NULL,
+    phoneno VARCHAR2(15) NOT NULL,
+    city VARCHAR2(30) NOT NULL
+);
+
+CREATE TABLE bank_branch (
+    branchcode VARCHAR2(10) PRIMARY KEY,
+    branchname VARCHAR2(50) NOT NULL,
+    branchcity VARCHAR2(30)
+);
+
+CREATE TABLE bank_account (
+    accno VARCHAR2(10) PRIMARY KEY,
+    custno VARCHAR2(10) REFERENCES bank_customers(custno),
+    acctype VARCHAR2(20),
+    balance NUMBER(15,2) NOT NULL,
+    branchcode VARCHAR2(10) REFERENCES bank_branch(branchcode)
+);
+
+CREATE TABLE bank_loan (
+    loanno VARCHAR2(10) PRIMARY KEY,
+    custno VARCHAR2(10) REFERENCES bank_customers(custno),
+    loanamount NUMBER(15,2),
+    branchcode VARCHAR2(10) REFERENCES bank_branch(branchcode),
+    loantype VARCHAR2(30),
+    interestrate NUMBER(5,2),
+    startdate DATE,
+    enddate DATE
+);
+
+-- Insert data into bank_customers table
+INSERT INTO bank_customers VALUES ('C0001', 'RAHUL SHARMA', '9876543210', 'DELHI');
+INSERT INTO bank_customers VALUES ('C0002', 'PRIYA PATEL', '8765432109', 'MUMBAI');
+INSERT INTO bank_customers VALUES ('C0003', 'AMIT KUMAR', '7654321098', 'BANGALORE');
+INSERT INTO bank_customers VALUES ('C0004', 'NEHA GUPTA', '6543210987', 'HYDERABAD');
+INSERT INTO bank_customers VALUES ('C0005', 'VIJAY SINGH', '5432109876', 'CHENNAI');
+INSERT INTO bank_customers VALUES ('C0006', 'ANITA DESAI', '4321098765', 'KOLKATA');
+INSERT INTO bank_customers VALUES ('C0007', 'SANJAY MEHTA', '3210987654', 'PUNE');
+INSERT INTO bank_customers VALUES ('C0008', 'MEERA JOSHI', '2109876543', 'AHMEDABAD');
+INSERT INTO bank_customers VALUES ('C0009', 'RAVI VERMA', '1098765432', 'JAIPUR');
+INSERT INTO bank_customers VALUES ('C0010', 'SUNITA REDDY', '9988776655', 'BHUBANESWAR');
+
+-- Insert data into bank_branch table
+INSERT INTO bank_branch VALUES ('B001', 'MAIN BRANCH', 'DELHI');
+INSERT INTO bank_branch VALUES ('B002', 'WESTERN BRANCH', 'MUMBAI');
+INSERT INTO bank_branch VALUES ('B003', 'SOUTH BRANCH', 'BANGALORE');
+INSERT INTO bank_branch VALUES ('B004', 'CENTRAL BRANCH', 'HYDERABAD');
+INSERT INTO bank_branch VALUES ('B005', 'EASTERN BRANCH', 'CHENNAI');
+INSERT INTO bank_branch VALUES ('B006', 'NORTH BRANCH', 'KOLKATA');
+
+-- Insert data into bank_account table
+INSERT INTO bank_account VALUES ('A0001', 'C0001', 'SAVINGS', 25000.00, 'B001');
+INSERT INTO bank_account VALUES ('A0002', 'C0002', 'CURRENT', 50000.00, 'B002');
+INSERT INTO bank_account VALUES ('A0003', 'C0003', 'SAVINGS', 75000.00, 'B003');
+INSERT INTO bank_account VALUES ('A0004', 'C0004', 'CURRENT', 100000.00, 'B004');
+INSERT INTO bank_account VALUES ('A0005', 'C0005', 'SAVINGS', 30000.00, 'B005');
+INSERT INTO bank_account VALUES ('A0006', 'C0006', 'CURRENT', 60000.00, 'B006');
+INSERT INTO bank_account VALUES ('A0007', 'C0007', 'SAVINGS', 45000.00, 'B001');
+INSERT INTO bank_account VALUES ('A0008', 'C0008', 'CURRENT', 80000.00, 'B002');
+INSERT INTO bank_account VALUES ('A0009', 'C0009', 'CURRENT', 120000.00, 'B003');
+INSERT INTO bank_account VALUES ('A0010', 'C0010', 'SAVINGS', 35000.00, 'B004');
+
+-- Insert data into bank_loan table
+INSERT INTO bank_loan VALUES ('L0001', 'C0001', 500000.00, 'B001', 'HOME', 8.50, TO_DATE('01-JAN-2022', 'DD-MON-YYYY'), TO_DATE('01-JAN-2032', 'DD-MON-YYYY'));
+INSERT INTO bank_loan VALUES ('L0002', 'C0003', 200000.00, 'B003', 'EDUCATION', 7.00, TO_DATE('15-FEB-2022', 'DD-MON-YYYY'), TO_DATE('15-FEB-2027', 'DD-MON-YYYY'));
+INSERT INTO bank_loan VALUES ('L0003', 'C0005', 300000.00, 'B005', 'PERSONAL', 10.00, TO_DATE('10-MAR-2022', 'DD-MON-YYYY'), TO_DATE('10-MAR-2025', 'DD-MON-YYYY'));
+INSERT INTO bank_loan VALUES ('L0004', 'C0008', 400000.00, 'B002', 'BUSINESS', 12.00, TO_DATE('20-APR-2022', 'DD-MON-YYYY'), TO_DATE('20-APR-2027', 'DD-MON-YYYY'));
