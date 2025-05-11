@@ -3,7 +3,8 @@ create table customer(
   name varchar2(20) not null,
   phone_no number(10),
   city varchar2(9) not null,
-  primary key (cust_no));
+  primary key (cust_no)
+);
 
 insert into customer values('C0001', 'RAJ ANAND SINGH', 9861258466, 'DELHI');
 insert into customer values('C0002', 'ANKITA SINGH', 9879958651, 'BANGALORE');
@@ -21,7 +22,8 @@ create table branch(
   branch_code varchar2(4),
   branch_name varchar2(20) not null,
   branch_city varchar2(8) check(branch_city in ('Delhi', 'Mumbai', 'Kolkata', 'Chennai')),
-  primary key (branch_code));
+  primary key (branch_code)
+);
 
 insert into branch values('B001', 'Janakpuri Branch', 'Delhi');
 insert into branch values('B002', 'Chandnichowk Branch', 'Delhi');
@@ -37,7 +39,8 @@ create table account(
   balance number(7) check(balance < 10000000),
   branch_code varchar2(4),
   primary key(account_no),
-  foreign key(branch_code) references Branch(branch_code));
+  foreign key(branch_code) references Branch(branch_code)
+);
 
 insert into account values('A0001', 'SB', 200000, 'B003');
 insert into account values('A0002', 'SB', 15000, 'B002');
@@ -49,3 +52,63 @@ insert into account values('A0007', 'SB', 48000, 'B001');
 insert into account values('A0008', 'SB', 7200, 'B002');
 insert into account values('A0009', 'SB', 18750, 'B003');
 insert into account values('A0010', 'FD', 99000, 'B004');
+
+
+create table depositor (
+  cust_no varchar2(5),
+  account_no varchar2(5),
+  primary key (cust_no, account_no),
+  foreign key (cust_no) references customer(cust_no),
+  foreign key (account_no) references account(account_no)
+);
+
+insert into depositor values('C0003', 'A0001');
+insert into depositor values('C0004', 'A0001');
+insert into depositor values('C0004', 'A0002');
+insert into depositor values('C0006', 'A0003');
+insert into depositor values('C0006', 'A0004');
+insert into depositor values('C0001', 'A0005');
+insert into depositor values('C0002', 'A0005');
+insert into depositor values('C0010', 'A0006');
+insert into depositor values('C0009', 'A0007');
+insert into depositor values('C0008', 'A0008');
+insert into depositor values('C0007', 'A0009');
+insert into depositor values('C0006', 'A0010');
+
+
+create table loan (
+  loan_no varchar2(5) check( loan_no like 'L%' ),
+  cust_no varchar2(5),
+  amount number check (amount > 1000),
+  branch_code varchar2(4),
+  primary key (loan_no),
+  foreign key (cust_no) references customer(cust_no),
+  foreign key (branch_code) references branch (branch_code)
+);
+
+insert into loan values('L0001', 'C0005', 3000000, 'B006');
+insert into loan values('L0002', 'C0001', 50000, 'B005');
+insert into loan values('L0003', 'C0002', 8000000, 'B004');
+insert into loan values('L0004', 'C0010', 100000, 'B004');
+insert into loan values('L0005', 'C0009', 9500000, 'B005');
+insert into loan values('L0006', 'C0008', 25000, 'B006');
+
+
+create table installment (
+  inst_no number check (inst_no <= 10),
+  loan_no varchar2(5),
+  inst_amount number(10, 2) not null,
+  primary key (inst_no, loan_no),
+  foreign key (loan_no) references loan(loan_no)
+);
+
+insert into installment values(1, 'L0005', 500000);
+insert into installment values(1, 'L0002', 10000);
+insert into installment values(1, 'L0003', 50000);
+insert into installment values(1, 'L0004', 20000);
+insert into installment values(2, 'L0005', 500000);
+insert into installment values(1, 'L0006', 3000);
+insert into installment values(2, 'L0002', 10000);
+insert into installment values(3, 'L0002', 10000);
+insert into installment values(2, 'L0003', 50000);
+insert into installment values(2, 'L0004', 20000);
