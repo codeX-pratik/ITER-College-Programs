@@ -127,5 +127,5 @@
     n)
         select sqrt(6464312) as square_root from dual;
 
-    0)
+    o)
         select lower('HELLO ITER') as lower_case from dual;
