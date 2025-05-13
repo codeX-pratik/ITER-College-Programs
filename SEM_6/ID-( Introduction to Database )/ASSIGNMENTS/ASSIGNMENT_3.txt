@@ -83,3 +83,49 @@
 
     p)
         select max(salary) as higher_salary from faculty_info where department = 'Comp. Sci';
+
+3. 
+    a)
+        select initcap('pratik') as capitalized_name from dual;
+
+    b)
+        select substr('pratik', 2, 5) as substring_name from dual;
+
+    c)
+        select length('Siksha O Anusandhan') as name_length from dual;
+
+    d)
+        select initcap(name) as faculty_name from faculty_info;
+
+    e)
+        select upper(substr(department, 1, 3)) as dept_code from faculty_info;
+
+    f)
+        select to_char(date_of_join, 'month') as join_month from faculty_info;
+
+    g)
+        select to_char(date_of_join, 'DD/MM/YY') as join_date from faculty_info;
+
+    h)
+        select months_between(sysdate, date_of_join) as experience_months from faculty_info;
+    
+    i)
+        select floor(months_between(sysdate, date_of_join)/12) || 'years ' || mod(floor(months_between(sysdate, date_of_join)), 12) || 'months' as experience from faculty_info;
+
+    j)
+        select to_char(date_of_join, 'day') as join_day from faculty_info;
+
+    k)
+        select to_char(sysdate + 15, 'DD-MON-YYYY') as date_15_days_later from dual;
+    
+    l)
+        select trunc(94204.27348, 2) as truncated_value from dual;
+    
+    m)
+        select 5 + power(8, 9) as result from dual;
+
+    n)
+        select sqrt(6464312) as square_root from dual;
+
+    0)
+        select lower('HELLO ITER') as lower_case from dual;
