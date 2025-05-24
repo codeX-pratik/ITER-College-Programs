@@ -1,0 +1,55 @@
+(A)
+
+select name, phone_no, cust_no from customer where cust_no in (select cust_no from depositor where account_no = 'A0004');
+
+select name from customer where cust_no not in (select cust_no from loan);
+
+select account_no, balance from account where account_no in (select account_no from depositor where cust_no = 'C0010');
+
+select * from installment where loan_no in (select loan_no from loan where cust_no = (select cust_no from customer where name = 'ASLESHA TIWARI'));
+
+select * from installment where loan_no in (select loan_no from loan where cust_no = (select cust_no from customer where name = 'ANKITA SINGH'));
+
+select branch_name, branch_city from branch where branch_code in (select branch_code from account where account_no in (select account_no from depositor where cust_no = (select cust_no from customer where name = 'ABHIJIT MISHRA')));
+
+CREATE TABLE ACCOUNT_TYPE AS SELECT ACCOUNT_NO, TYPE FROM ACCOUNT WHERE 1 = 0;
+
+insert into account_type (account_no, type) select account_no, type from account where balance < 50000;
+
+update account_type set type = 'FD' where account_no in (select account_no from depositor where cust_no = 'C0007');
+
+delete from account_type where account_no in (select account_no from account where balance < 20000);
+
+select account_no from account where balance > some ( select balance from account where type = 'FD');
+
+select account_no from account where balance > all ( select balance from account where type = 'FD');
+
+select * from branch b where exists ( select 1 from loan l where l.branch_code = b.branch_code);
+
+select * from loan where not exists (select 1 from installment where loan.loan_no = installment.loan_no);
+
+update account set balance = case when balance > 80000 then balance * 1.06 else balance * 1.05 end;
+
+
+
+
+(B)
+select l.loan_no from loan l join branch b on l.branch_code = b.branch_code where b.branch_city = 'Mumbai';
+
+select distinct a.type from account a join branch b on a.branch_code = b.branch_code where b.branch_city = 'Delhi';
+
+select c.name, c.phone_no from customer c join depositor d on c.cust_no = d.cust_no join account a on d.account_no = a.account_no where a.balance > 100000;
+
+select i.inst_no, i.inst_amount from installment i join loan l on i.loan_no = l.loan_no join customer c on l.cust_no = c.cust_no where c.name = 'RAJ ANAND SINGH';
+
+select c.name from customer c where c.cust_no not in ( select d.cust_no from depositor d join account a on d.account_no = a.account_no where a.type = 'SB');
+
+select distinct c.name from customer c join loan l on c.cust_no = l.cust_no join installment i on l.loan_no = i.loan_no where i.inst_amount = 50000;
+
+select distinct c.phone_no from customer c join depositor d on c.cust_no = d.cust_no join account a on d.account_no = a.account_no join branch b on a.branch_code = b.branch_code where b.branch_name = 'Saltlake Branch';
+
+select distinct b.branch_name, b.branch_city from branch b join account a on b.branch_code = a.branch_code join depositor d on a.account_no = d.account_no join customer c on d.cust_no = c.cust_no where c.name = 'ABHIJIT MISHRA';
+
+select a.type, a.balance from account a join depositor d on a.account_no = d.account_no join customer c on d.cust_no = c.cust_no where c.name = 'SWAROOP RAY';
+
+with branch_totals as ( select branch_code, sum(balance) as total_balance from account group by branch_code), avg_balance as (select avg(total_balance) as average from branch_totals) select bt.branch_code from branch_totals bt, avg_balance ab where bt.total_balance > ab.average;
