@@ -7,11 +7,9 @@ class Book {
     double price;
     string publisher;
 public:
-    // Constructor
     Book(string a, string t, double p, string pub) 
         : author(a), title(t), price(p), publisher(pub) {}
     
-    // Search function
     void search(string t, string a) {
         if (title == t && author == a) {
             cout << "Book found!\n";

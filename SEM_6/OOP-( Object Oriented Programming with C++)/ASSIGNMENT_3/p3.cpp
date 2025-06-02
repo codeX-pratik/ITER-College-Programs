@@ -5,10 +5,8 @@ class Complex {
     double real;
     double imaginary;
 public:
-    // Constructor
     Complex(double r = 0, double i = 0) : real(r), imaginary(i) {}
     
-    // Static add function
     static Complex addcomplex(Complex a, Complex b) {
         return Complex(a.real + b.real, a.imaginary + b.imaginary);
     }
