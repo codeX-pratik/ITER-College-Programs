@@ -69,20 +69,25 @@ def decrypt(ciphertext, key):
         plaintext += decrypt_pair(matrix, pair)
     return plaintext
 
-def main():
-    choice = input("Enter 'E' for encryption or 'D' for decryption: ").upper()
-    if choice == 'E':
-        plaintext = input("Enter the plaintext: ")
-        key = input("Enter the key: ")
-        ciphertext = encrypt(plaintext, key)
-        print("Encrypted text:", ciphertext)
-    elif choice == 'D':
-        ciphertext = input("Enter the ciphertext: ")
-        key = input("Enter the key: ")
-        plaintext = decrypt(ciphertext, key)
-        print("Decrypted text:", plaintext)
-    else:
-        print("Invalid choice")
 
-if __name__ == "__main__":
-    main()
+choice = input("Enter 'E' for encryption or 'D' for decryption: ").upper()
+if choice == 'E':
+    plaintext = input("Enter the plaintext: ")
+    key = input("Enter the key: ")
+    ciphertext = encrypt(plaintext, key)
+    print("Encrypted text:", ciphertext)
+elif choice == 'D':
+    ciphertext = input("Enter the ciphertext: ")
+    key = input("Enter the key: ")
+    plaintext = decrypt(ciphertext, key)
+    print("Decrypted text:", plaintext)
+else:
+    print("Invalid choice")
+
+
+"""
+Enter 'E' for encryption or 'D' for decryption: E
+Enter the plaintext: INSTRUMENT
+Enter the key: MONARCHY
+Encrypted text: GATLMZCLRQ
+"""

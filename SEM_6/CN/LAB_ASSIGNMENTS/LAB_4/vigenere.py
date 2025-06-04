@@ -41,3 +41,10 @@ elif choice == 'D':
     print("Decrypted text:", plaintext)
 else:
     print("Invalid choice")
+
+"""
+Enter 'E' for encryption or 'D' for decryption: E
+Enter the plaintext: ALL IS WELL
+Enter the key: CAKE
+Encrypted text: CLV KS AGLV
+"""
