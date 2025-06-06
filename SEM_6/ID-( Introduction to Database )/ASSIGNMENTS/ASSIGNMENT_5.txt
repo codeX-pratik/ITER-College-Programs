@@ -6,7 +6,7 @@ select name from customer where cust_no not in (select cust_no from loan);
 
 select account_no, balance from account where account_no in (select account_no from depositor where cust_no = 'C0010');
 
-select * from installment where loan_no in (select loan_no from loan where cust_no = (select cust_no from customer where name = 'ASLESHA TIWARI'));
+select b.branch_city from customer c join loan l on c.cust_no = l.cust_no join branch b on l.branch_code = b.branch_code where c.name = 'ASLESHA TIWARI';
 
 select * from installment where loan_no in (select loan_no from loan where cust_no = (select cust_no from customer where name = 'ANKITA SINGH'));
 
